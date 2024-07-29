@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+*.eggs
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.sqlite3
+*.sqlite
+*.db
+*.tgz
+*.gz
+*.bz2
+*.app
+*.dmg
+*.xcodeproj
+*.sass-cache/
+*.package
+*.class
+*.sublime-project
+*.sublime-workspace
+*.project
+*.pydevproject
+*.coverage
+.coverage.*
+.cache
+*.mypy_cache/
+.cache/
+.pytest_cache/
+pytestdebug.log
+.ipynb_checkpoints
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+venv/
+venv.bak/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+
+# Environment variables
+.env
+
+# Streamlit
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# Heroku
+.heroku/
+
+# JetBrains IDEs
+.idea/
+
+# Visual Studio Code
+.vscode/
