@@ -52,6 +52,7 @@ submit1 = st.button("Tell me about the details resume")
 submit2 = st.button("How can I improve my skills based on job description?")
 submit3 = st.button("What are the key skills/keywords required for this job?")
 submit4 = st.button("What percentage of my resume matches the job description?")
+submit5 = st.button("Edit my resume to align more closely to the job role.")
 
 input_prompt1 = """
 You are an experienced technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst. Your task is to review the provided resume against the job description for these profiles. Kindly share your professional evaluation on whether the candidate's profile aligns with the given job description.
@@ -69,6 +70,10 @@ Share your thoughts on the key skills that are required for the given job descri
 input_prompt4 = """
 You are a skilled ATS (Applicant Tracking System) scanner with a deep understanding of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst, and deep ATS functionality. Your task is to evaluate the resume against the provided job description.
 Give me the percentage match of the resume with the job description after evaluating the job description. First, the output should come as a percentage, and then keywords missing and final thoughts.
+"""
+input_prompt5 = """
+You are a technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst and Application Tracking Sysytem. Your role is to scrutinize the resume in light of the job description provided, and modify the given the resume that it aligns with the given job description
+Also, provide the content in the given resume that is to be changed with the new content.
 """
 
 if submit1:
@@ -102,6 +107,15 @@ elif submit4:
     if uploaded_file is not None:
         pdf_content = input_pdf_setup(uploaded_file)
         response = get_gemini_response(input_text, pdf_content, input_prompt4)
+        st.subheader("The response is : ")
+        st.write(response)
+    else:
+        st.write("Please upload a PDF file")
+
+elif submit5:
+    if uploaded_file is not None:
+        pdf_content = input_pdf_setup(uploaded_file)
+        response = get_gemini_response(input_text, pdf_content, input_prompt5)
         st.subheader("The response is : ")
         st.write(response)
     else:
