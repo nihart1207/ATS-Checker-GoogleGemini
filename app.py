@@ -73,7 +73,7 @@ Give me the percentage match of the resume with the job description after evalua
 """
 input_prompt5 = """
 You are a technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst and Application Tracking Sysytem. Your role is to scrutinize the resume in light of the job description provided, and modify the given the resume that it aligns with the given job description
-Also, provide the content in the given resume that is to be changed with the new content.
+Also, provide the content in the given resume that is to be changed with the new content. And provide the user with the updated resume that is fit for the job role in a pdf format and is downloadable
 """
 
 if submit1:
