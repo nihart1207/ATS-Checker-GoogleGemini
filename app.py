@@ -12,7 +12,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_gemini_response(input_text, pdf_content, prompt):
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content([input_text, pdf_content[0], prompt])
         return response.text
     except Exception as e:
@@ -53,6 +53,7 @@ submit2 = st.button("How can I improve my skills based on job description?")
 submit3 = st.button("What are the key skills/keywords required for this job?")
 submit4 = st.button("What percentage of my resume matches the job description?")
 submit5 = st.button("Edit my resume to align more closely to the job role.")
+submit6 = st.button("Write a cover letter for the given job description, using my resume such that the cover letter aligns to the job role.")
 
 input_prompt1 = """
 You are an experienced technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst. Your task is to review the provided resume against the job description for these profiles. Kindly share your professional evaluation on whether the candidate's profile aligns with the given job description.
@@ -73,7 +74,12 @@ Give me the percentage match of the resume with the job description after evalua
 """
 input_prompt5 = """
 You are a technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst and Application Tracking Sysytem. Your role is to scrutinize the resume in light of the job description provided, and modify the given the resume that it aligns with the given job description
-Also, provide the content in the given resume that is to be changed with the new content. And provide the user with the updated resume that is fit for the job role in a pdf format and is downloadable
+Also, provide the content in the given resume that is to be changed with the new content. And provide the user with the updated resume that includes the missing keyworkds and is fit for the job role, in a pdf format.
+"""
+
+input_prompt6 = """
+You are a technical human resource manager with tech experience in the field of Data Science, Full Stack Web Development, Big Data Engineering, DevOPS, Data Analyst and Application Tracking Sysytem. Your role is to scrutinize the resume in light of the job description provided, and write a one page formal cover letter for the given job description using the provided resume such that it aligns with the given job description
+Also, provide the content of the cover letter using the required details from the provided resume. And provide the user with the cover letter, in a pdf format.
 """
 
 if submit1:
@@ -116,6 +122,15 @@ elif submit5:
     if uploaded_file is not None:
         pdf_content = input_pdf_setup(uploaded_file)
         response = get_gemini_response(input_text, pdf_content, input_prompt5)
+        st.subheader("The response is : ")
+        st.write(response)
+    else:
+        st.write("Please upload a PDF file")
+
+elif submit6:
+    if uploaded_file is not None:
+        pdf_content = input_pdf_setup(uploaded_file)
+        response = get_gemini_response(input_text, pdf_content, input_prompt6)
         st.subheader("The response is : ")
         st.write(response)
     else:
